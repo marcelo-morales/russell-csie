@@ -52,10 +52,9 @@ if __name__ == "__main__":
     PROMPT_LIMIT = 3 #number of times a user is allowed to speak to microphone
 
     for i in range(PROMPT_LIMIT):
-        guess = recognize_speech(recognizer, microphone)
-        if guess["transcription"]:
-            break
-        if not guess["success"]:
+        response_from_user = recognize_speech(recognizer, microphone)
+        
+        if not response_from_user["success"]:
             break
         print("I didn't catch that. What did you say?\n")
 

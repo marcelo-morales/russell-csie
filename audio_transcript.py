@@ -1,4 +1,8 @@
 import speech_recognition as sr
+import time
+
+#using speech_recognition library
+#tutorial: https://realpython.com/python-speech-recognition/
 
 def recognize_speech(recognizer, microphone):
     if not isinstance(recognizer, sr.Recognizer):
@@ -37,20 +41,18 @@ def recognize_speech(recognizer, microphone):
 
 
 if __name__ == "__main__":
-    r = sr.Recognizer()
-    mic = sr.Microphone()
-    with mic as source:
-        r.adjust_for_ambient_noise(source) #try to block out outside noise
-        audio = r.listen(source)
+    recognizer = sr.Recognizer()
+    microphone = sr.Microphone()
+    
 
     instruction = "ask me question based on a specific attribute for my character"
     print(instruction)
     time.sleep(3)
 
-    PROMPT_LIMIT = 3
+    PROMPT_LIMIT = 3 #number of times a user is allowed to speak to microphone
 
     for i in range(PROMPT_LIMIT):
-        guess = recognize_speech_from_mic(recognizer, microphone)
+        guess = recognize_speech(recognizer, microphone)
         if guess["transcription"]:
             break
         if not guess["success"]:

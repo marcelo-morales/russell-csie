@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import time
+from nltk.corpus import stopwords 
+from nltk.tokenize import word_tokenize
 
 #using speech_recognition library
 #tutorial: https://realpython.com/python-speech-recognition/
@@ -43,6 +45,11 @@ def recognize_speech(recognizer, microphone):
 if __name__ == "__main__":
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
+
+    print("these are the stopwords i will use \n")
+    print(stopwords.words('english'))
+    words_to_filter = set(stopwords.words('english'))
+    
     
 
     instruction = "ask me question based on a specific attribute for my character"
@@ -58,8 +65,20 @@ if __name__ == "__main__":
             break
         print("I didn't catch that. What did you say?\n")
 
-    print("You said: {}".format(guess["transcription"]))
-    
-    print("these are all the microphone inputs I can find " + sr.Microphone.list_microphone_names())
+    print("You said: {}".format(response_from_user["transcription"]))
+
+    word_tokens = word_tokenize(response_from_user["transcription"])
+
+    filtered_sentence = [w for w in word_tokens if not w.lower() in words_to_filter]
+ 
+    filtered_sentence = []
+
+    for w in word_tokens:
+        if w not in words_to_filter:
+            filtered_sentence.append(w)
+
+    print("after filtering out words we dont need, you said " + str(filtered_sentence))
+
+    print("these are all the microphone inputs I can find " + str(sr.Microphone.list_microphone_names()))
 
     print("hello world\n")

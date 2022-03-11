@@ -13,7 +13,7 @@ From main directory, run "npm i".
 Navigate to client directory, run "npm i."
 From main directory, run "npm start."
 
-Commands:
+Commands: <br>
 npm i <br>
 cd client <br>
 npm i <br>

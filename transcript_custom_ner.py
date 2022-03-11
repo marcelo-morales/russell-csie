@@ -9,9 +9,6 @@ import speech_recognition as sr
 import time 
 from spacy import displacy
 
-
-
-
 #from gensim.parsing.preprocessing import remove_stopwords
 #look into finding a way to remove stop words without anaconda, installation issues
 #without using filtering out words library, i still dont catch umms and filler words, so 
@@ -59,6 +56,17 @@ def recognize_speech(recognizer, microphone):
 
 
 if __name__ == "__main__":
+
+    nlp = spacy.blank('en')  # create blank Language class
+    print("Created blank 'en' model")
+    if 'ner' not in nlp.pipe_names:
+        ner = nlp.create_pipe('ner')
+        nlp.add_pipe(ner)
+        print("created ner")
+    else:
+        ner = nlp.get_pipe('ner')
+
+    
 
    # Getting the pipeline component
     ner=nlp.get_pipe("ner")
@@ -141,11 +149,13 @@ if __name__ == "__main__":
     for _, annotations in TRAIN_DATA:
         for ent in annotations.get("entities"):
             ner.add_label(ent[2])
+    # print("adding label")
 
     # Disable pipeline components you dont need to change
     pipe_exceptions = ["ner", "trf_wordpiecer", "trf_tok2vec"]
     unaffected_pipes = [pipe for pipe in nlp.pipe_names if pipe not in pipe_exceptions]
 
+    optimizer = nlp.begin_training()
 
     # TRAINING THE MODEL
     with nlp.disable_pipes(*unaffected_pipes):

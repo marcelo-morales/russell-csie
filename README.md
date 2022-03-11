@@ -1,5 +1,5 @@
 # russell-csie
-Please see this colab (https://colab.research.google.com/drive/1_C7hsvlS6bjkHbxR1jiYZWwVqTfV4imJ) for NLP progress.
+Please see this colab (https://colab.research.google.com/drive/1XlB6MdMErjjFAI8GFYXBDQTAXFYKtJ5t?usp=sharing) for NLP progress.
 
 
 # Text-To-Speech

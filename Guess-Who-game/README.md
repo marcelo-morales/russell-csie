@@ -14,8 +14,8 @@ Navigate to client directory, run "npm i."
 From main directory, run "npm start."
 
 Commands:
-npm i
-cd client
-npm i
-cd ..
-npm start
+npm i <br>
+cd client <br>
+npm i <br>
+cd .. <br>
+npm start <br>

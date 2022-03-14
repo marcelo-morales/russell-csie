@@ -8,6 +8,8 @@ from pathlib import Path
 import speech_recognition as sr
 import time 
 from spacy import displacy
+from spacy.training.example import Example
+
 
 #using speech_recognition library
 #tutorial: https://realpython.com/python-speech-recognition/
@@ -142,18 +144,38 @@ def main():
         for iteration in range(30):
 
             # shuufling examples  before every iteration
+            # random.shuffle(TRAIN_DATA)
+            # losses = {}
+            # # batch up the examples using spaCy's minibatch
+            # batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
+            # for batch in batches:
+            #     texts, annotations = zip(*batch)
+            #     nlp.update(
+            #                 texts,  # batch of texts
+            #                 annotations,  # batch of annotations
+            #                 drop=0.5,  # dropout - make it harder to memorise data
+            #                 losses=losses,
+                # )
+            # shuufling examples  before every iteration
             random.shuffle(TRAIN_DATA)
             losses = {}
             # batch up the examples using spaCy's minibatch
             batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
             for batch in batches:
-                texts, annotations = zip(*batch)
-                nlp.update(
-                            texts,  # batch of texts
-                            annotations,  # batch of annotations
-                            drop=0.5,  # dropout - make it harder to memorise data
-                            losses=losses,
-                )
+                for text, annotations in batch:
+                    # create Example
+                    doc = nlp.make_doc(text)
+                    example = Example.from_dict(doc, annotations)
+                    # Update the model
+                    nlp.update([example], losses=losses, drop=0.3)
+                    # from Spact 2.2.4, now on 3.0
+                    # nlp.update(
+                    #             texts,  # batch of texts
+                    #             annotations,  # batch of annotations
+                    #             drop=0.5,  # dropout - make it harder to memorise data
+                    #             losses=losses,
+                    #         )
+
     print("Losses", losses)
     
     #response form user passed to transcription variable
@@ -177,15 +199,15 @@ def main():
     ##		return affirmative_response
 
     # Save the  model to directory
-    output_dir = Path('/content/')
-    nlp.to_disk(output_dir)
-    print("Saved model to", output_dir)
+    # output_dir = Path('/content/')
+    # nlp.to_disk(output_dir)
+    # print("Saved model to", output_dir)
 
-    # Load the saved model and predict
-    print("Loading from", output_dir)
-    nlp_updated = spacy.load(output_dir)
-    doc = nlp_updated("Fridge can be ordered in FlipKart" )
-    print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+    # # Load the saved model and predict
+    # print("Loading from", output_dir)
+    # nlp_updated = spacy.load(output_dir)
+    # doc = nlp_updated("Fridge can be ordered in FlipKart" )
+    # print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
 
 
 if __name__ == "__main__":

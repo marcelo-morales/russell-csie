@@ -91,38 +91,38 @@ def main():
     ## GPE = hat
     ## LAW - bald
     TRAIN_DATA = [
-                ("Is your person wearing glasses?", {"entities": [(23,30,"ORG")]}),
-                ("Do they have glasses?", {"entities": [(13,20,"ORG")]}),
-                ("Does your person have glasses on?", {"entities": [(22,29,"ORG")]}),
+              ("Is your person wearing glasses?", {"entities": [(23,30,"glasses")]}),
+              ("Do they have glasses?", {"entities": [(13,20,"glasses")]}),
+              ("Does your person have glasses on?", {"entities": [(22,29,"glasses")]}),
 
-                ("Is your person four-eyed?", {"entities": [(15,24,"ORG")]}),
-                ("Is she four-eyed?", {"entities": [(7,16,"ORG")]}),
+              ("Is your person four-eyed?", {"entities": [(15,24,"glasses")]}),
+              ("Is she four-eyed?", {"entities": [(7,16,"glasses")]}),
 
-                ("Is she blond?", {"entities": [(7,12,"DATE")]}),
-                ("Is your person blond-haired?", {"entities": [(15,20,"DATE")]}),
-                ("Is he golden-haired?", {"entities": [(6,12,"DATE")]}),
-                ("Are they gold-haired?", {"entities": [(9,13,"DATE")]}),
-                ("Does your person have yellow hair?", {"entities": [(22,28,"DATE")]}),
-                ("Are they auburn-haired?", {"entities": [(9,15,"DATE")]}),
-                ("Is your person a ginger?", {"entities": [(17,24,"DATE")]}),              
-                
-                ("Is your person wearing a green hat?", {"entities": [(25,30,"NORP")]}),
-                ("Are they wearing a green hat?", {"entities": [(19,24,"NORP")]}),
-                ("Does your person have a green hat?", {"entities": [(24,29,"NORP")]}), 
-                ("Do they have a green hat?", {"entities": [(15,20,"NORP")]}),
+              ("Is she blond?", {"entities": [(7,12,"hair_color")]}),
+              ("Is your person blond-haired?", {"entities": [(15,20,"hair_color")]}),
+              ("Is he golden-haired?", {"entities": [(6,12,"hair_color")]}),
+              ("Are they gold-haired?", {"entities": [(9,13,"hair_color")]}),
+              ("Does your person have yellow hair?", {"entities": [(22,28,"hair_color")]}),
+              ("Are they auburn-haired?", {"entities": [(9,15,"hair_color")]}),
+              ("Is your person a ginger?", {"entities": [(17,24,"hair_color")]}),              
+              
+              ("Is your person wearing a green hat?", {"entities": [(25,30,"hat_color")]}),
+              ("Are they wearing a green hat?", {"entities": [(19,24,"hat_color")]}),
+              ("Does your person have a green hat?", {"entities": [(24,29,"hat_color")]}), 
+              ("Do they have a green hat?", {"entities": [(15,20,"hat_color")]}),
 
-                ("Does your person wear a hat?", {"entities": [(24,27,"GPE")]}), 
-                ("Do they wear a hat?", {"entities": [(15,18,"GPE")]}), 
-                ("Do they have a hat?", {"entities": [(15,18,"GPE")]}), 
+              ("Does your person wear a hat?", {"entities": [(24,27,"hat")]}), 
+              ("Do they wear a hat?", {"entities": [(15,18,"hat")]}), 
+              ("Do they have a hat?", {"entities": [(15,18,"hat")]}), 
 
-                ("Does your person not have head hair?", {"entities": [(17,35,"LAW")]}),
-                ("Is your person bald?", {"entities": [(15,19,"LAW")]}),
-                ("Is she bald?", {"entities": [(7,13,"LAW")]}),
-                ("Is he bald?", {"entities": [(6,10,"LAW")]}),
-                ("Does he not have head hair?", {"entities": [(8,26,"LAW")]}),
-                ("Does he not have hair on his head?", {"entities": [(8,33,"LAW")]})                                          
-                # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
-                ]
+              ("Does your person not have head hair?", {"entities": [(17,35,"bald")]}),
+              ("Is your person bald?", {"entities": [(15,19,"bald")]}),
+              ("Is she bald?", {"entities": [(7,13,"bald")]}),
+              ("Is he bald?", {"entities": [(6,10,"bald")]}),
+              ("Does he not have head hair?", {"entities": [(8,26,"bald")]}),
+              ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]})                                          
+              # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
+              ]
 
     # Adding labels to the `ner`
 

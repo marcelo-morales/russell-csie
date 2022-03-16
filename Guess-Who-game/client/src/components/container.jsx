@@ -34,7 +34,7 @@ var Container = React.createClass({
                   this.state.hiddenCharacters[i]);
     }
     if (answerIsYes) {
-      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person does have that"));
+      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has that"));
     }
     else if (answerIsNo) {
       this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have that"));

@@ -54,6 +54,7 @@ if __name__ == "__main__":
     
     
 
+    #format 
     instruction = "ask me question based on a specific attribute for my character"
     print(instruction)
     #time.sleep(2)

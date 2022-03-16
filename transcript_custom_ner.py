@@ -52,10 +52,11 @@ def recognize_speech(recognizer, microphone):
 def speech_to_text():
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
-
-    instruction = "ask me question based on a specific attribute for my character"
+    
+    print("\n\n*******************************************************************")
+    instruction = "Ask me question based on a specific attribute for my character..."
     print(instruction)
-    time.sleep(1)
+    #time.sleep(1)
 
     PROMPT_LIMIT = 1 #number of times a user is allowed to speak to microphone
 
@@ -183,8 +184,13 @@ def main():
 
     # Testing the model
     doc = nlp(transcription)
-    print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+    print("\n Entities", [(ent.text, ent.label_) for ent in doc.ents])
 
+    for ent in doc.ents:
+        trait = ent.text
+        value = ent.label_
+
+    print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
     # for ent in doc.ents:
     # 	print(ent.text, ent.start_char, ent.end_char, ent.label_)
@@ -208,7 +214,6 @@ def main():
     # nlp_updated = spacy.load(output_dir)
     # doc = nlp_updated("Fridge can be ordered in FlipKart" )
     # print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
-
 
 if __name__ == "__main__":
     main()

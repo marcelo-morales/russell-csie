@@ -2,7 +2,7 @@ var React = require('react');
 
 var Menus = require('./menus/menus.jsx');
 var Card = require('./cards/card.jsx');
-var Notification = require('./notification.jsx')
+var Notification = require('./notification.jsx');
 
 var Container = React.createClass({
 
@@ -12,13 +12,16 @@ var Container = React.createClass({
       hidden.push(false);
     }
     var randomNo = Math.floor(Math.random() * 8);
+    
     return {
       unknownCharacter: this.props.characters[randomNo],
-      hiddenCharacters: hidden
+      hiddenCharacters: hidden,
+      synth: window.speechSynthesis
     } ;
   },
 
   questionSelected: function(question, answer) {
+
     // If the answer is YES remove all those that do not share the attribute
     // If the answer is NO remove all those that share the attribute
     var hidden = [];
@@ -30,6 +33,7 @@ var Container = React.createClass({
                   (answerIsYes && (characters[i][question] !== answer)) ||
                   this.state.hiddenCharacters[i]);
     }
+    this.state.synth.speak(new SpeechSynthesisUtterance("hello"));
     // These changes will force the re-render.
     this.setState( {
       hiddenCharacters: hidden,

@@ -33,7 +33,12 @@ var Container = React.createClass({
                   (answerIsYes && (characters[i][question] !== answer)) ||
                   this.state.hiddenCharacters[i]);
     }
-    this.state.synth.speak(new SpeechSynthesisUtterance("hello"));
+    if (answerIsYes) {
+      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person does have that"));
+    }
+    else if (answerIsNo) {
+      this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have that"));
+    }
     // These changes will force the re-render.
     this.setState( {
       hiddenCharacters: hidden,

@@ -192,10 +192,14 @@ def main():
 
     print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
+    result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
+
     # for ent in doc.ents:
     # 	print(ent.text, ent.start_char, ent.end_char, ent.label_)
 
     displacy.render(doc, style='ent',jupyter=True)
+
+    return result_array
 
     ## ent.text ('blond') and ent.label ( 'hair_color') will then be sent to the game backend to check
     ##
@@ -214,6 +218,8 @@ def main():
     # nlp_updated = spacy.load(output_dir)
     # doc = nlp_updated("Fridge can be ordered in FlipKart" )
     # print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+
+
 
 if __name__ == "__main__":
     main()

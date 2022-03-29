@@ -6,4 +6,6 @@ app = Flask(__name__)
 @app.route('/')
 def get_question():
     result = main()
-    return jsonify(result), 200
+    response = jsonify(result)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response

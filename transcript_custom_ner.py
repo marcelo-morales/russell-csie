@@ -116,15 +116,15 @@ def main():
               ("Is she bald?", {"entities": [(7,13,"bald")]}),
               ("Is he bald?", {"entities": [(6,10,"bald")]}),
               ("Does he not have head hair?", {"entities": [(8,26,"bald")]}),
-              ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]})  
+              ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]}),  
         
-              ("Is your person Dave?", {"entities": [(15,19,"character_guess")]}) 
-              ("Is it Sarah?", {"entities": [(6,11,"character_guess")]}) 
-              ("Is she Kelly?", {"entities": [(7,12,"character_guess")]}) 
-              ("Is he Sam?", {"entities": [(6,9,"character_guess")]}) 
-              ("Are they Alex?", {"entities": [(9,13,"character_guess")]}) 
-              ("Is your character Harry?", {"entities": [(18,23,"character_guess")]})
-              ("Sarah?", {"entities": [(0,5,"character_guess")]}) 
+              ("Is your person Dave?", {"entities": [(15,19,"character_guess")]}), 
+              ("Is it Sarah?", {"entities": [(6,11,"character_guess")]}), 
+              ("Is she Kelly?", {"entities": [(7,12,"character_guess")]}), 
+              ("Is he Sam?", {"entities": [(6,9,"character_guess")]}), 
+              ("Are they Alex?", {"entities": [(9,13,"character_guess")]}), 
+              ("Is your character Harry?", {"entities": [(18,23,"character_guess")]}),
+              ("Sarah?", {"entities": [(0,5,"character_guess")]}), 
               ("James?", {"entities": [(0,5,"character_guess")]}) 
               # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
               ]

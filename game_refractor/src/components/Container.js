@@ -6,6 +6,8 @@ import Notification from "./Notification"
 
 import logo from "../assets/logo.png"
 
+import axios from "axios";
+
 class Container extends Component {
 
   constructor(props) {
@@ -23,7 +25,16 @@ class Container extends Component {
     }
   }
 
-  questionSelected = (question, answer) => {
+  questionSelected = async (question, answer) => {
+
+    const response = await axios.get("http://127.0.0.1:5000/");
+    const data = response.data;
+
+    question = "hairColour";
+    answer = data["adjective"];
+
+    console.log(question);
+    console.log(answer);
 
     // If the answer is YES remove all those that do not share the attribute
     // If the answer is NO remove all those that share the attribute

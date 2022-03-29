@@ -5,7 +5,7 @@ var characters = [
     house: "Gryffindor",
     ancestry: "Half-blood",
     eyeColour: "Green",
-    hairColour: "Black",
+    hair_color: "black",
     image: "http://hp-api.herokuapp.com/images/harry.jpg"
   },
   {
@@ -14,7 +14,7 @@ var characters = [
     house: "Gryffindor",
     ancestry: "Muggleborn",
     eyeColour: "Brown",
-    hairColour: "Brown",
+    hairColour: "brown",
     image: "http://hp-api.herokuapp.com/images/hermione.jpeg"
   },
   {
@@ -23,7 +23,7 @@ var characters = [
     house: "Gryffindor",
     ancestry: "Pure-blood",
     eyeColour: "Blue",
-    hairColour: "Ginger",
+    hairColour: "ginger",
     image: "http://hp-api.herokuapp.com/images/ron.jpg"
   },
   {
@@ -32,7 +32,7 @@ var characters = [
     house: "Slytherin",
     ancestry: "Pure-blood",
     eyeColour: "Grey",
-    hairColour: "Blonde",
+    hairColour: "blond",
     image: "http://hp-api.herokuapp.com/images/draco.jpg"
   },
   {
@@ -41,7 +41,7 @@ var characters = [
     house: "Ravenclaw",
     ancestry: "Unknown",
     eyeColour: "Brown",
-    hairColour: "Black",
+    hairColour: "black",
     image: "http://hp-api.herokuapp.com/images/cho.jpg"
   },
   {
@@ -50,7 +50,7 @@ var characters = [
     house: "Ravenclaw",
     ancestry: "Unknown",
     eyeColour: "Grey",
-    hairColour: "Blonde",
+    hairColour: "blond",
     image: "http://hp-api.herokuapp.com/images/luna.jpg"
   },
   {
@@ -59,7 +59,7 @@ var characters = [
     house: "Gryffindor",
     ancestry: "Pure-blood",
     eyeColour: "Brown",
-    hairColour: "Ginger",
+    hairColour: "ginger",
     image: "http://hp-api.herokuapp.com/images/ginny.jpg"
   },
   {
@@ -68,7 +68,7 @@ var characters = [
     house: "Slytherin",
     ancestry: "Pure-blood",
     eyeColour: "Unknown",
-    hairColour: "Brown",
+    hairColour: "brown",
     image: "http://hp-api.herokuapp.com/images/goyle.jpg"
   }
 ]

@@ -71,11 +71,14 @@ class Container extends Component {
   render() {
     var message = "";
     if (this.state.answerIsYes !== undefined) {
-      if (this.gameOver())
+      if (this.gameOver()) {
         message = this.state.unknownCharacter.name + " is the chosen one.";
+        this.state.synth.speak(new SpeechSynthesisUtterance(message));
+      }
       else {
         message = "The answer is ";
         message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
+        this.state.synth.speak(new SpeechSynthesisUtterance(message));
       }
     }
 

@@ -127,6 +127,8 @@ def main():
               ("Sarah?", {"entities": [(0,5,"character_guess")]}), 
               ("James?", {"entities": [(0,5,"character_guess")]}) 
               # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
+
+              
               ]
 
     # Adding labels to the `ner`
@@ -203,18 +205,18 @@ def main():
 
     displacy.render(doc, style='ent',jupyter=True)
 
-    return result_array
-
     # Save the  model to directory
-    # output_dir = Path('/content/')
-    # nlp.to_disk(output_dir)
-    # print("Saved model to", output_dir)
+    output_dir = Path('./content/')
+    nlp.to_disk(output_dir)
+    print("Saved model to", output_dir)
 
-    # # Load the saved model and predict
-    # print("Loading from", output_dir)
-    # nlp_updated = spacy.load(output_dir)
-    # doc = nlp_updated("Fridge can be ordered in FlipKart" )
-    # print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+    # Load the saved model and predict
+    print("Loading from", output_dir)
+    nlp_updated = spacy.load(output_dir)
+    doc = nlp_updated("Fridge can be ordered in FlipKart" )
+    print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+
+    return result_array
 
 
 

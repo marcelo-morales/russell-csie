@@ -1,75 +1,84 @@
+import blonde_guy from "../src/assets/77534752_l.jpg";
+import curly_hair_girl from "../src/assets/77536038_l.jpg";
+import bald_guy from "../src/assets/82827148_l.jpg";
+import chef from "../src/assets/102261218_l.jpg";
+import red_hat_woman from "../src/assets/122489350_l.jpg";
+import curly_hair_woman from "../src/assets/136882535_l.jpg";
+import witch from  "../src/assets/153565814_l.jpg";
+import yellow_hat_red_glasses_man from  "../src/assets/53763813_fb-image (1).jpeg";
+
 var characters = [
   {
-    name: "Harry Potter",
-    gender: "Male",
-    house: "Gryffindor",
-    ancestry: "Half-blood",
-    eyeColour: "Green",
-    hair_color: "black",
-    image: "http://hp-api.herokuapp.com/images/harry.jpg"
+    name: "Alex",
+    hair_color: "blonde",
+    hat_color: "false",
+    wearing_a_hat: "false",
+    bald: "false",
+    glasses: "false",
+    image: blonde_guy
   },
   {
-    name: "Hermione Granger",
-    gender: "Female",
-    house: "Gryffindor",
-    ancestry: "Muggleborn",
-    eyeColour: "Brown",
-    hairColour: "brown",
-    image: "http://hp-api.herokuapp.com/images/hermione.jpeg"
+    name: "Anita",
+    hair_color: "brown",
+    hat_color: "false",
+    wearing_a_hat: "false",
+    bald: "false",
+    glasses: "false",
+    image: curly_hair_girl
   },
   {
-    name: "Ron Weasley",
-    gender: "Male",
-    house: "Gryffindor",
-    ancestry: "Pure-blood",
-    eyeColour: "Blue",
-    hairColour: "ginger",
-    image: "http://hp-api.herokuapp.com/images/ron.jpg"
+    name: "Bernard",
+    hair_color: "false",
+    hat_color: "false",
+    wearing_a_hat: "false",
+    bald: "true",
+    glasses: "true",
+    image: bald_guy
   },
   {
-    name: "Draco Malfoy",
-    gender: "Male",
-    house: "Slytherin",
-    ancestry: "Pure-blood",
-    eyeColour: "Grey",
-    hairColour: "blond",
-    image: "http://hp-api.herokuapp.com/images/draco.jpg"
+    name: "Charles",
+    hair_color: "false",
+    hat_color: "white",
+    wearing_a_hat: "true",
+    bald: "false",
+    glasses: "false",
+    image: chef
   },
   {
-    name: "Cho Chang",
-    gender: "Female",
-    house: "Ravenclaw",
-    ancestry: "Unknown",
-    eyeColour: "Brown",
-    hairColour: "black",
-    image: "http://hp-api.herokuapp.com/images/cho.jpg"
+    name: "Susan",
+    hair_color: "brown",
+    hat_color: "red",
+    wearing_a_hat: "true",
+    bald: "false",
+    glasses: "true",
+    image: red_hat_woman
   },
   {
-    name: "Luna Lovegood",
-    gender: "Female",
-    house: "Ravenclaw",
-    ancestry: "Unknown",
-    eyeColour: "Grey",
-    hairColour: "blond",
-    image: "http://hp-api.herokuapp.com/images/luna.jpg"
+    name: "Shannon",
+    hair_color: "brown",
+    hat_color: "false",
+    wearing_a_hat: "false",
+    bald: "false",
+    glasses: "true",
+    image: curly_hair_woman
   },
   {
-    name: "Ginny Weasley",
-    gender: "Female",
-    house: "Gryffindor",
-    ancestry: "Pure-blood",
-    eyeColour: "Brown",
-    hairColour: "ginger",
-    image: "http://hp-api.herokuapp.com/images/ginny.jpg"
+    name: "Claire",
+    hair_color: "orange",
+    hat_color: "purple",
+    wearing_a_hat: "true",
+    bald: "false",
+    glasses: "false",
+    image: witch
   },
   {
-    name: "Gregory Goyle",
-    gender: "Male",
-    house: "Slytherin",
-    ancestry: "Pure-blood",
-    eyeColour: "Unknown",
-    hairColour: "brown",
-    image: "http://hp-api.herokuapp.com/images/goyle.jpg"
+    name: "Paul",
+    hair_color: "brown",
+    hat_color: "yellow",
+    wearing_a_hat: "true",
+    bald: "false",
+    glasses: "true",
+    image: yellow_hat_red_glasses_man
   }
 ]
 

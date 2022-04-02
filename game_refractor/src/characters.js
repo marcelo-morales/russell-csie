@@ -1,11 +1,11 @@
-import blonde_guy from "../src/assets/77534752_l.jpg";
-import curly_hair_girl from "../src/assets/77536038_l.jpg";
-import bald_guy from "../src/assets/82827148_l.jpg";
-import chef from "../src/assets/102261218_l.jpg";
-import red_hat_woman from "../src/assets/122489350_l.jpg";
-import curly_hair_woman from "../src/assets/136882535_l.jpg";
-import witch from  "../src/assets/153565814_l.jpg";
-import yellow_hat_red_glasses_man from  "../src/assets/53763813_fb-image (1).jpeg";
+import blonde_guy from "../src/assets/blonde_man.jpg";
+import curly_hair_girl from "../src/assets/curly_hair_woman.jpg";
+import bald_guy from "../src/assets/bald_man.jpg";
+import chef from "../src/assets/chef_man.jpg";
+import red_hat_woman from "../src/assets/red_hat_woman.jpg";
+import curly_hair_woman from "../src/assets/curly_hair_woman.jpg";
+import witch from  "../src/assets/purple_witch_hat.jpg";
+import yellow_hat_red_glasses_man from  "../src/assets/yellow_hat_man.jpeg";
 
 var characters = [
   {

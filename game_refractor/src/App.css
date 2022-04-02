@@ -1,5 +1,6 @@
 body {
   font-family: "Arial";
+  background-color: "blue";
 }
 
 img {
@@ -120,4 +121,10 @@ select{
 .field-values p {
   text-align: left;
   margin: 3px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -12,7 +12,7 @@ function Card(props) {
       </div>
       <div className="details">
         <div className="field-names">
-          <p>Name:</p>
+          <h1>Name:</h1>
           {/* <p>Gender:</p>
           <p>House:</p>
           <p>Ancestry:</p>
@@ -20,7 +20,7 @@ function Card(props) {
           <p>Hair colour:</p> */}
         </div>
         <div className="field-values">
-          <p>{props.character.name}</p>
+          <h1>{props.character.name}</h1>
           {/* <p>{props.character.gender}</p>
           <p>{props.character.house}</p>
           <p>{props.character.ancestry}</p>

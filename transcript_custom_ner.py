@@ -116,19 +116,19 @@ def main():
               ("Is she bald?", {"entities": [(7,13,"bald")]}),
               ("Is he bald?", {"entities": [(6,10,"bald")]}),
               ("Does he not have head hair?", {"entities": [(8,26,"bald")]}),
-              ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]}),  
-        
+              ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]}),
+
               ("Is your person Dave?", {"entities": [(15,19,"character_guess")]}), 
-              ("Is it Sarah?", {"entities": [(6,11,"character_guess")]}), 
+              ("Is it Sarah?", {"entities": [(6,11,"character_guess")]}),
               ("Is she Kelly?", {"entities": [(7,12,"character_guess")]}), 
               ("Is he Sam?", {"entities": [(6,9,"character_guess")]}), 
               ("Are they Alex?", {"entities": [(9,13,"character_guess")]}), 
               ("Is your character Harry?", {"entities": [(18,23,"character_guess")]}),
               ("Sarah?", {"entities": [(0,5,"character_guess")]}), 
-              ("James?", {"entities": [(0,5,"character_guess")]}) 
+              ("James?", {"entities": [(0,5,"character_guess")]})  
               # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
 
-              
+
               ]
 
     # Adding labels to the `ner`
@@ -198,7 +198,7 @@ def main():
 
     print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
-    result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
+    #result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
     # for ent in doc.ents:
     # 	print(ent.text, ent.start_char, ent.end_char, ent.label_)
@@ -213,9 +213,11 @@ def main():
     # Load the saved model and predict
     print("Loading from", output_dir)
     nlp_updated = spacy.load(output_dir)
-    doc = nlp_updated("Fridge can be ordered in FlipKart" )
+    doc = nlp_updated(transcription) 
     print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
+    result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
+    #send to backend
     return result_array
 
 

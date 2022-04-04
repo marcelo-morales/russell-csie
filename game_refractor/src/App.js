@@ -7,6 +7,8 @@ function App() {
   return (
     <body>
       <div className="image-container">
+        <p><h1>Try asking questions about:<br></br></h1>
+        <h2> Hair color, baldness, hats, glasses</h2></p>
         <img src={dog_avatar} alt="Logo" />
       </div>
       <Container characters={characters}></Container>

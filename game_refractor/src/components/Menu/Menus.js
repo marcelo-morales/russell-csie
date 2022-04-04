@@ -57,15 +57,7 @@ class Menus extends Component {
     var answerMenu = this.makeAnswerMenu(this.state.questionChoice);
     return(
       <div className="menus">
-        <Menu_Question
-          menuIndex={this.state.questionChoice}
-          handleChange={this.setQuestionChoice}>
-        </Menu_Question>
-        <Menu_Answer
-          menuIndex={this.state.answerChoice}
-          answerMenu={answerMenu}
-          handleChange={this.setAnswerChoice}>
-        </Menu_Answer>
+        <h2>Click the button below to ask a question:</h2>
         <Ask_Question
           handleClick={this.askQuestion}>
         </Ask_Question>

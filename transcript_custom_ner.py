@@ -153,7 +153,9 @@ def main():
               ("is your person a ginger", {"entities": [(17,24,"hair_color")]}),
               ("is their hair brown", {"entities": [(14,19,"hair_color")]}),
               ("is her hair red", {"entities": [(12,15,"hair_color")]}), 
-              ("is she red haired", {"entities": [(7,10,"hair_color")]}),             
+              ("is she red haired", {"entities": [(7,10,"hair_color")]}),
+              ("is she brunette", {"entities": [(7,15,"hair_color")]}),
+              ("is your character a brunette" , {"entities": [(20,28,"hair_color")]}),
               
               ("is your person wearing a green hat", {"entities": [(25,30,"hat_color")]}),
               ("are they wearing a green hat", {"entities": [(19,24,"hat_color")]}),

@@ -6,6 +6,7 @@ import red_hat_woman from "../src/assets/red_hat_woman.jpg";
 import curly_hair_woman from "../src/assets/curly_hair_woman.jpg";
 import witch from  "../src/assets/purple_witch_hat.jpg";
 import yellow_hat_red_glasses_man from  "../src/assets/yellow_hat_man.jpeg";
+import brunette_female from "../src/assets/brunette_female.jpg";
 
 var characters = [
   {
@@ -24,7 +25,7 @@ var characters = [
     wearing_a_hat: "false",
     bald: "false",
     wearing_glasses: "false",
-    image: curly_hair_girl
+    image: brunette_female
   },
   {
     name: "Bernard",

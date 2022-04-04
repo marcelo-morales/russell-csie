@@ -13,7 +13,6 @@ from spacy.training.example import Example
 
 #using speech_recognition library
 #tutorial: https://realpython.com/python-speech-recognition/
-
 def recognize_speech(recognizer, microphone):
     if not isinstance(recognizer, sr.Recognizer):
         raise TypeError("`recognizer` must be `Recognizer` instance")
@@ -184,8 +183,13 @@ def main():
                     #         )
 
     print("Losses", losses)
+
+    # SAVE the  model to directory
+    output_dir = Path('./content/')
+    nlp.to_disk(output_dir)
+    print("Saved model to", output_dir)
     
-    #response form user passed to transcription variable
+    #TRANSCRIPTION
     transcription = speech_to_text()
 
     # Testing the model
@@ -198,17 +202,14 @@ def main():
 
     print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
-    #result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
+    # #result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
-    # for ent in doc.ents:
-    # 	print(ent.text, ent.start_char, ent.end_char, ent.label_)
+    # # for ent in doc.ents:
+    # # 	print(ent.text, ent.start_char, ent.end_char, ent.label_)
 
-    displacy.render(doc, style='ent',jupyter=True)
+    # displacy.render(doc, style='ent',jupyter=True)
 
-    # Save the  model to directory
-    output_dir = Path('./content/')
-    nlp.to_disk(output_dir)
-    print("Saved model to", output_dir)
+
 
     # Load the saved model and predict
     print("Loading from", output_dir)

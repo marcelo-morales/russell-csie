@@ -91,6 +91,8 @@ def main():
         print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
         result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
+
+        return result_array
     else:
 
         nlp = spacy.blank('en')  # create blank Language class

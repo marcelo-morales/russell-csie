@@ -108,50 +108,81 @@ def main():
         ner=nlp.get_pipe("ner")
 
         # training data
+        # NEW TRAIN_DATA
         TRAIN_DATA = [
-                ("Is your person wearing glasses?", {"entities": [(23,30,"glasses")]}),
-                ("Do they have glasses?", {"entities": [(13,20,"glasses")]}),
-                ("Does your person have glasses on?", {"entities": [(22,29,"glasses")]}),
+                  ("what's for dinner", {"entities": []}),
+                  ("got any dinner", {"entities": []}),
+                  ("did you eat dinner", {"entities": []}),
+                  ("wait what's going on again", {"entities": []}),
+                  ("i'm confused", {"entities": []}),
+                  ("where did you all learn frightened", {"entities": []}),
+                  ("hi my name is", {"entities": []}),
+                  ("what is this game called", {"entities": []}),
+                  ("is it cold outside", {"entities": []}),
+                  ("could you raise the thermostat", {"entities": []}),
+                  ("call my nurse", {"entities": []}),
+                  ("like that that's fair", {"entities": []}),
+                  ("that's a butt", {"entities": []}),
+                  ("it's a person", {"entities": []}),
+                  ("oh yeah there's a persons", {"entities": []}),
+                  ("yes does the character have a pleasant expression", {"entities": []}),
+                  # Note: take this null example out when beard trait is added
+                  ("does the character have a beard or a goatee", {"entities": []}),
+                  ("no does a character have", {"entities": []}),
+                  # Notes: that this null example out when gender is added
+                  ("Is a character a male", {"entities": []}),
+                  ("someone told me this would be fun", {"entities": []}),
 
-                ("Is your person four-eyed?", {"entities": [(15,24,"glasses")]}),
-                ("Is she four-eyed?", {"entities": [(7,16,"glasses")]}),
+                  ("is your person wearing glasses", {"entities": [(23,30,"wearing_glasses")]}),
+                  ("do they have glasses", {"entities": [(13,20,"wearing_glasses")]}),
+                  ("does your person have glasses on", {"entities": [(22,29,"wearing_glasses")]}),
 
-                ("Is she blond?", {"entities": [(7,12,"hair_color")]}),
-                ("Is your person blond-haired?", {"entities": [(15,20,"hair_color")]}),
-                ("Is he golden-haired?", {"entities": [(6,12,"hair_color")]}),
-                ("Are they gold-haired?", {"entities": [(9,13,"hair_color")]}),
-                ("Does your person have yellow hair?", {"entities": [(22,28,"hair_color")]}),
-                ("Are they auburn-haired?", {"entities": [(9,15,"hair_color")]}),
-                ("Is your person a ginger?", {"entities": [(17,24,"hair_color")]}),              
-                
-                ("Is your person wearing a green hat?", {"entities": [(25,30,"hat_color")]}),
-                ("Are they wearing a green hat?", {"entities": [(19,24,"hat_color")]}),
-                ("Does your person have a green hat?", {"entities": [(24,29,"hat_color")]}), 
-                ("Do they have a green hat?", {"entities": [(15,20,"hat_color")]}),
+                  ("is your person four eyed", {"entities": [(15,24,"wearing_glasses")]}),
+                  ("is she four eyed", {"entities": [(7,16,"wearing_glasses")]}),
 
-                ("Does your person wear a hat?", {"entities": [(24,27,"hat")]}), 
-                ("Do they wear a hat?", {"entities": [(15,18,"hat")]}), 
-                ("Do they have a hat?", {"entities": [(15,18,"hat")]}), 
+                  ("is she blond", {"entities": [(7,12,"hair_color")]}),
+                  ("is your person blond haired", {"entities": [(15,20,"hair_color")]}),
+                  ("is he golden haired", {"entities": [(6,12,"hair_color")]}),
+                  ("are they gold haired", {"entities": [(9,13,"hair_color")]}),
+                  ("does your person have yellow hair", {"entities": [(22,28,"hair_color")]}),
+                  ("are they auburn haired?", {"entities": [(9,15,"hair_color")]}),
+                  ("is your person a ginger", {"entities": [(17,24,"hair_color")]}),
+                  ("is their hair brown", {"entities": [(14,19,"hair_color")]}),
+                  ("is her hair red", {"entities": [(12,15,"hair_color")]}), 
+                  ("is she red haired", {"entities": [(7,10,"hair_color")]}),             
 
-                ("Does your person not have head hair?", {"entities": [(17,35,"bald")]}),
-                ("Is your person bald?", {"entities": [(15,19,"bald")]}),
-                ("Is she bald?", {"entities": [(7,13,"bald")]}),
-                ("Is he bald?", {"entities": [(6,10,"bald")]}),
-                ("Does he not have head hair?", {"entities": [(8,26,"bald")]}),
-                ("Does he not have hair on his head?", {"entities": [(8,33,"bald")]}),
+                  ("is your person wearing a green hat", {"entities": [(25,30,"hat_color")]}),
+                  ("are they wearing a green hat", {"entities": [(19,24,"hat_color")]}),
+                  ("does your person have a green hat", {"entities": [(24,29,"hat_color")]}), 
+                  ("do they have a green hat", {"entities": [(15,20,"hat_color")]}),
 
-                ("Is your person Dave?", {"entities": [(15,19,"character_guess")]}), 
-                ("Is it Sarah?", {"entities": [(6,11,"character_guess")]}),
-                ("Is she Kelly?", {"entities": [(7,12,"character_guess")]}), 
-                ("Is he Sam?", {"entities": [(6,9,"character_guess")]}), 
-                ("Are they Alex?", {"entities": [(9,13,"character_guess")]}), 
-                ("Is your character Harry?", {"entities": [(18,23,"character_guess")]}),
-                ("Sarah?", {"entities": [(0,5,"character_guess")]}), 
-                ("James?", {"entities": [(0,5,"character_guess")]})  
-                # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
+                  ("does your person wear a hat", {"entities": [(24,27,"wearing_a_hat")]}), 
+                  ("do they wear a hat", {"entities": [(15,18,"wearing_a_hat")]}), 
+                  ("do they have a hat", {"entities": [(15,18,"wearing_a_hat")]}), 
 
+                  ("does your person not have head hair", {"entities": [(17,35,"bald")]}),
+                  ("is your person bald", {"entities": [(15,19,"bald")]}),
+                  ("is she bald", {"entities": [(7,13,"bald")]}),
+                  ("is he bald", {"entities": [(6,10,"bald")]}),
+                  ("does he not have head hair", {"entities": [(8,26,"bald")]}),
+                  ("does she not have hair on her head", {"entities": [(8,21,"bald")]}),
+                  ("do they have hair on their head", {"entities": [(8,17,"bald")]}),
+                  ("does she have hair", {"entities": [(9,18,"bald")]}),
+                  ("is their head bald", {"entities": [(14,18,"bald")]}),
 
-                ]
+                  ("is your person bernard", {"entities": [(15,22,"name")]}), 
+                  ("is it anita", {"entities": [(6,11,"name")]}),
+                  ("is she susan", {"entities": [(7,12,"name")]}), 
+                  ("is he sam", {"entities": [(6,9,"name")]}), 
+                  ("are they alex", {"entities": [(9,13,"name")]}),
+                  ("are they paul", {"entities": [(9,13,"name")]}),
+                  ("my guess is arthur", {"entities": [(12,18,"name")]}),
+                  ("how about jamie ", {"entities": [(10,15,"name")]}),
+                  ("is your character charles", {"entities": [(18,25,"name")]}),
+                  ("shannon", {"entities": [(0,7,"name")]}), 
+                  ("claire", {"entities": [(0,6,"name")]})                                           
+                  # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
+                  ]
 
         # Adding labels to the `ner`
 
@@ -169,43 +200,22 @@ def main():
         # TRAINING THE MODEL
         with nlp.disable_pipes(*unaffected_pipes):
 
-            # Training for 30 iterations
-            for iteration in range(30):
-
-                # shuufling examples  before every iteration
-                # random.shuffle(TRAIN_DATA)
-                # losses = {}
-                # # batch up the examples using spaCy's minibatch
-                # batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
-                # for batch in batches:
-                #     texts, annotations = zip(*batch)
-                #     nlp.update(
-                #                 texts,  # batch of texts
-                #                 annotations,  # batch of annotations
-                #                 drop=0.5,  # dropout - make it harder to memorise data
-                #                 losses=losses,
-                    # )
+         # Training for 30 iterations
+            for iteration in range(200): # train for longer, maybe 200 iterations or until loss < 0
                 # shuufling examples  before every iteration
                 random.shuffle(TRAIN_DATA)
                 losses = {}
                 # batch up the examples using spaCy's minibatch
-                batches = minibatch(TRAIN_DATA, size=compounding(4.0, 32.0, 1.001))
+                batches = minibatch(TRAIN_DATA, size=64) # size=32 or 64 or even len(TRAIN_DATA) is better
                 for batch in batches:
-                    for text, annotations in batch:
-                        # create Example
-                        doc = nlp.make_doc(text)
-                        example = Example.from_dict(doc, annotations)
-                        # Update the model
-                        nlp.update([example], losses=losses, drop=0.3)
-                        # from Spact 2.2.4, now on 3.0
-                        # nlp.update(
-                        #             texts,  # batch of texts
-                        #             annotations,  # batch of annotations
-                        #             drop=0.5,  # dropout - make it harder to memorise data
-                        #             losses=losses,
-                        #         )
-
-        print("Losses", losses)
+                    texts, annotations = zip(*batch)
+                    nlp.update(
+                                texts,  # batch of texts
+                                annotations,  # batch of annotations
+                                drop=0.5,  # dropout - make it harder to memorise data
+                                losses=losses,
+                            )
+                print("Losses", losses)
 
         # SAVE the  model to directory
         output_dir = Path('./content/')

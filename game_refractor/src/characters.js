@@ -38,7 +38,7 @@ var characters = [
   },
   {
     name: "Charles",
-    hair_color: "false",
+    hair_color: "brown",
     hat_color: "white",
     wearing_a_hat: "true",
     bald: "false",
@@ -47,7 +47,7 @@ var characters = [
   },
   {
     name: "Susan",
-    hair_color: "brown",
+    hair_color: "black",
     hat_color: "red",
     wearing_a_hat: "true",
     bald: "false",

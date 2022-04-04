@@ -17,6 +17,20 @@ In addition, you will also need to install the SpeechRecognition[https://pypi.or
 pip install SpeechRecognition
 ```
 
+# Russell: Your Friendly Game Companion
+  To run the whole app, both the frontend and the backend, make sure you are in the outmost directory where api.py is located. From this location, run
+  
+  ```bash
+export FLASK_APP=api.py 
+```
+followed by
+  ```bash
+flask run
+```
+You will be instructed that the app is running on some port in your localhost. Open that link (will look something like http://127.0.0.1:5000/) , and start playing Russell: Your Friendly Game Companion
+
+
+
 # Text-To-Speech
   To test out this subsection, you can run 
   

@@ -49,6 +49,32 @@ def recognize_speech(recognizer, microphone):
 
     return response
 
+def refactor_for_backend(result_array):
+    entity = result_array["trait"]
+    returned_string = result_array["adjective"]
+
+    #hair color blonde
+    if (entity == "hair_color" and (returned_string == "blond" or returned_string == "blonde" 
+        or returned_string == "yellow" or returned_string == "gold" or returned_string == "golden")):
+        result_array["adjective"] = "blond"
+
+    #hair color red
+    if (entity == "hair_color" and (returned_string == "red" or returned_string == "ginger" 
+        or returned_string == "auburn")):
+        result_array["adjective"] = "red"
+
+    #hair color brown
+    if (entity == "hair_color" and (returned_string == "brown" or returned_string == "brunette" 
+        )):
+        result_array["adjective"] = "brown"
+
+    return result_array
+    
+
+
+
+
+
 def speech_to_text():
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
@@ -90,7 +116,16 @@ def main():
         print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
         print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
 
+
+
         result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
+
+        result_array = refactor_for_backend(result_array)
+
+
+
+        print("what is returned to game backend is " + result_array["trait"] + " and " + result_array["adjective"])
+
 
         return result_array
     else:

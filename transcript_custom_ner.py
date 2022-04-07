@@ -49,7 +49,7 @@ def recognize_speech(recognizer, microphone):
 
     return response
 
-def refactor_for_backend(result_array):
+def refactor_for_backend(result_array, transcription):
     entity = result_array["trait"]
     returned_string = result_array["adjective"]
 
@@ -67,6 +67,28 @@ def refactor_for_backend(result_array):
     if (entity == "hair_color" and (returned_string == "brown" or returned_string == "brunette" 
         )):
         result_array["adjective"] = "brown"
+
+    #glasses refactor
+    if "glasses" in transcription and "not" in transcription:
+        result_array = {"trait" : str("glasses"), "adjective" :  "false"}
+
+    if "glasses" in transcription:
+        result_array = {"trait" : str("glasses"), "adjective" :  "true"}
+
+    
+    #hat refactor
+    if "hat" in transcription and "not" in transcription:
+        result_array = {"trait" : str("wearing_a_hat"), "adjective" :  "false"}
+
+    if "hat" in transcription:
+        result_array = {"trait" : str("wearing_a_hat"), "adjective" :  "true"}
+
+        #bald refactor
+    if "bald" in transcription and "not" in transcription:
+        result_array = {"trait" : str("bald"), "adjective" :  "false"}
+
+    if "bald" in transcription:
+        result_array = {"trait" : str("bald"), "adjective" :  "true"}
 
     return result_array
     
@@ -120,7 +142,7 @@ def main():
 
         result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
-        result_array = refactor_for_backend(result_array)
+        result_array = refactor_for_backend(result_array, transcription)
 
 
 

@@ -19,11 +19,11 @@
   "labels":{
     "ner":[
       "bald",
-      "character_guess",
-      "glasses",
       "hair_color",
-      "hat",
-      "hat_color"
+      "hat_color",
+      "name",
+      "wearing_a_hat",
+      "wearing_glasses"
     ]
   },
   "pipeline":[

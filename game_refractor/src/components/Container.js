@@ -30,7 +30,7 @@ class Container extends Component {
     const response = await axios.get("http://127.0.0.1:5000/");
     const data = response.data;
 
-    question = "hairColour";
+    question = data["trait"];
     answer = data["adjective"];
 
     console.log(question);
@@ -78,7 +78,7 @@ class Container extends Component {
         message = "The answer is ";
         message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
       }
-      this.state.synth.speak(new SpeechSynthesisUtterance(message));
+      // this.state.synth.speak(new SpeechSynthesisUtterance(message));
     }
 
     var cards = this.props.characters.map(function(character, index){

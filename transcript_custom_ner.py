@@ -136,18 +136,13 @@ def main():
             value = ent.label_
 
         print("Entities", [(ent.text, ent.label_) for ent in doc.ents])
-        print("\n The value label (adjective)  is " + str(ent.text) + " and the field label (trait) is " +  str(ent.label_) + "\n")
-
-
+        print("\n The value label (adjective)  is " + str(trait) + " and the field label (trait) is " +  str(value) + "\n")
 
         result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
         result_array = refactor_for_backend(result_array, transcription)
 
-
-
         print("what is returned to game backend is " + result_array["trait"] + " and " + result_array["adjective"])
-
 
         return result_array
     else:
@@ -162,7 +157,7 @@ def main():
             ner = nlp.get_pipe('ner')
 
         # Getting the pipeline component
-        ner=nlp.get_pipe("ner")
+        #ner=nlp.get_pipe("ner")
 
         # training data
         # NEW TRAIN_DATA
@@ -275,14 +270,36 @@ def main():
                 losses = {}
                 # batch up the examples using spaCy's minibatch
                 batches = minibatch(TRAIN_DATA, size=64) # size=32 or 64 or even len(TRAIN_DATA) is better
+                
+                # for batch in batches:
+                #     texts, annotations = zip(*batch)
+                #     nlp.update(
+                #                 texts,  # batch of texts
+                #                 annotations,  # batch of annotations
+                #                 drop=0.5,  # dropout - make it harder to memorise data
+                #                 losses=losses,
+                #  
+
                 for batch in batches:
-                    texts, annotations = zip(*batch)
-                    nlp.update(
-                                texts,  # batch of texts
-                                annotations,  # batch of annotations
-                                drop=0.5,  # dropout - make it harder to memorise data
-                                losses=losses,
-                            )
+
+                    for text, annotations in batch:
+                        # create Example
+                        doc = nlp.make_doc(text)
+                        example = Example.from_dict(doc, annotations)
+                        # Update the model
+                        nlp.update([example], losses=losses, drop=0.3)
+                        # from Spact 2.2.4, now on 3.0
+                        # nlp.update(
+                        #             texts,  # batch of texts
+                        #             annotations,  # batch of annotations
+                        #             drop=0.5,  # dropout - make it harder to memorise data
+                        #             losses=losses,
+                        #         )
+
+
+
+
+
                 print("Losses", losses)
 
         # SAVE the  model to directory

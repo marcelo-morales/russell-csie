@@ -188,13 +188,13 @@ def main():
               ("is your person wearing glasses", {"entities": [(23,30,"wearing_glasses")]}),
               ("do they have glasses", {"entities": [(13,20,"wearing_glasses")]}),
               ("does your person have glasses on", {"entities": [(22,29,"wearing_glasses")]}),
-              ("does your person not have glasses on?", {"entities": [(17,24,"wearing_glasses")]}),
-              ("does your character not have glasses on?", {"entities": [(20,36,"wearing_glasses")]}),
-              ("does your character not wear glasses on?", {"entities": [(20,36,"wearing_glasses")]}),
-              ("does she not have glasses on?", {"entities": [(9,25,"wearing_glasses")]}),
-              ("does he not have glasses on?", {"entities": [(8,24,"wearing_glasses")]}),
-              ("do they not wear glasses?", {"entities": [(8,24,"wearing_glasses")]}),
-              ("does he not wear glasses?", {"entities": [(8,24,"wearing_glasses")]}),
+              ("Does your person not have glasses on?", {"entities": [(17,24,"wearing_glasses")]}),
+              ("Does your character not have glasses on?", {"entities": [(20,36,"wearing_glasses")]}),
+              ("Does your character not wear glasses on?", {"entities": [(20,36,"wearing_glasses")]}),
+              ("Does she not have glasses on?", {"entities": [(9,25,"wearing_glasses")]}),
+              ("Does he not have glasses on?", {"entities": [(8,24,"wearing_glasses")]}),
+              ("Do they not wear glasses?", {"entities": [(8,24,"wearing_glasses")]}),
+              ("Does he not wear glasses?", {"entities": [(8,24,"wearing_glasses")]}),
 
               ("is she blond", {"entities": [(7,12,"hair_color")]}),
               ("is your person blond haired", {"entities": [(15,20,"hair_color")]}),
@@ -207,12 +207,12 @@ def main():
               ("is her hair red", {"entities": [(12,15,"hair_color")]}), 
               ("is she red haired", {"entities": [(7,10,"hair_color")]}),
               ("is she brunette", {"entities": [(7,15,"hair_color")]}),
-              ("is your character a brunette" , {"entities": [(20,28,"hair_color")]}),
+              ("is your character a brunette" , {"entities": [(20,28,"hair_color")]}), 
               
-              ("is your person wearing a green hat", {"entities": [(25,30,"hat_color")]}),
-              ("are they wearing a green hat", {"entities": [(19,24,"hat_color")]}),
-              ("does your person have a green hat", {"entities": [(24,29,"hat_color")]}), 
-              ("do they have a green hat", {"entities": [(15,20,"hat_color")]}),
+              ("is your person wearing a red hat", {"entities": [(24,27,"hat_color")]}),
+              ("are they wearing a purple hat", {"entities": [(19,25,"hat_color")]}),
+              ("does your person have a yellow hat", {"entities": [(24,30,"hat_color")]}), 
+              ("do they have a white hat", {"entities": [(15,20,"hat_color")]}),
 
               ("does your person wear a hat", {"entities": [(24,27,"wearing_a_hat")]}), 
               ("do they wear a hat", {"entities": [(15,18,"wearing_a_hat")]}), 
@@ -221,7 +221,7 @@ def main():
               ("do they not wear a hat?", {"entities": [(8,22,"wearing_a_hat")]}),
               ("does your character not have a hat?", {"entities": [(19,33,"wearing_a_hat")]}),  
               ("does she not wear a hat?", {"entities": [(9,23,"wearing_a_hat")]}), 
-              ("does your person not have a hat on?", {"entities": [(17,31,"wearing_a_hat")]}), 
+              ("does your person not have a hat on?", {"entities": [(17,31,"wearing_a_hat")]}),  
 
               ("does your person not have head hair", {"entities": [(17,35,"bald")]}),
               ("is your person bald", {"entities": [(15,19,"bald")]}),
@@ -295,9 +295,6 @@ def main():
                         #             drop=0.5,  # dropout - make it harder to memorise data
                         #             losses=losses,
                         #         )
-
-
-
 
 
                 print("Losses", losses)

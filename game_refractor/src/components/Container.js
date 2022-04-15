@@ -48,10 +48,11 @@ class Container extends Component {
                   this.state.hiddenCharacters[i]);
     }
     if (answerIsYes) {
-      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has that"));
+      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " + data["adjective"] + data["trait"]));
+      //this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has that"));
     }
     else if (answerIsNo) {
-      this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have that"));
+      this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   data["adjective"] + data["trait"]));
     }
     // These changes will force the re-render.
     this.setState( {
@@ -72,7 +73,8 @@ class Container extends Component {
     var message = "";
     if (this.state.answerIsYes !== undefined) {
       if (this.gameOver()) {
-        message = this.state.unknownCharacter.name + " is the chosen one.";
+        message = this.state.unknownCharacter.name + " is the chosen one. Congrats!";
+        this.state.synth.speak(new SpeechSynthesisUtterance(message));
       }
       else {
         message = "The answer is ";

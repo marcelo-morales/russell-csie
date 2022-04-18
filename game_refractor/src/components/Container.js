@@ -10,6 +10,8 @@ import axios from "axios";
 
 class Container extends Component {
 
+
+
   constructor(props) {
     super(props);
     var hidden = []
@@ -24,6 +26,52 @@ class Container extends Component {
       synth: window.speechSynthesis
     }
   }
+
+   formatSpeakingOutput =  (adjective, trait) => {
+    let returnList = []
+
+    console.log('this is adj ' + adjective)
+    console.log('this is trait ' + trait)
+
+    if (trait === "hair_color") {
+      if (adjective === "blond") {
+        returnList.push("blonde")
+        returnList.push("hair")
+        return returnList;
+      }
+
+      returnList.push(adjective)
+      returnList.push("hair")
+      return returnList;
+    }
+
+
+    else if (trait === "wearing_a_hat") {
+      if (adjective === "true" ) {
+        returnList.push("a")
+        returnList.push("hat")
+      }
+     
+    }
+
+    else if (trait === "hat_color") {
+      returnList.push("a " + adjective)
+      returnList.push("hat")
+    }
+
+    else if (trait === "glasses") {
+        returnList.push("glasses")
+        returnList.push("")
+    }
+
+    else if (trait == "bald") {
+      returnList.push("glasses")
+      returnList.push("")
+    } 
+
+    return returnList;
+
+}
 
   questionSelected = async (question, answer) => {
 
@@ -48,12 +96,41 @@ class Container extends Component {
                   this.state.hiddenCharacters[i]);
     }
     if (answerIsYes) {
-      this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " + data["adjective"] + data["trait"]));
+      //this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " + data["adjective"] + data["trait"]));
+      let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
+      if (data["trait"] === "bald") {
+        this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person is bald"));
+      } else {
+        if (resultArray) {
+        this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " +   resultArray[0] + resultArray[1]));
+        }
+        else {
+          this.state.synth.speak(new SpeechSynthesisUtterance("I'm sorry can you repeat that? I was not able to catch what you were saying"));
+        }
+      }
       //this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has that"));
     }
     else if (answerIsNo) {
-      this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   data["adjective"] + data["trait"]));
+
+      //this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   data["adjective"] + data["trait"]));
+      let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
+      if (data["trait"] === "bald") {
+        this.state.synth.speak(new SpeechSynthesisUtterance("No, my person is not bald"));
+      } else {
+        if (resultArray) {
+          this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   resultArray[0] + resultArray[1]));
+          console.log('this is what i am saying ' + 'No, my person does not have ' +   resultArray[0] + ' ' +  resultArray[1]);
+        }
+        else {
+          this.state.synth.speak(new SpeechSynthesisUtterance("I'm sorry can you repeat that? I was not able to catch what you were saying"));
+        }
+      }
+      // this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   resultArray[0] + resultArray[1]));
+      // console.log('this is what i am saying ' + 'No, my person does not have ' +   resultArray[0] + ' ' +  resultArray[1]);
     }
+
+
+
     // These changes will force the re-render.
     this.setState( {
       hiddenCharacters: hidden,
@@ -68,6 +145,7 @@ class Container extends Component {
     })
     return (count === 1);
   }
+
 
   render() {
     var message = "";

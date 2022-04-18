@@ -53,18 +53,22 @@ def refactor_for_backend(result_array, transcription):
     entity = result_array["trait"]
     returned_string = result_array["adjective"]
 
+    print('this is entity ' + entity + '\n')
+    print('this is adj ' + returned_string + '\n')
+
+
     #hair color blonde
     if (entity == "hair_color" and (returned_string == "blond" or returned_string == "blonde" 
         or returned_string == "yellow" or returned_string == "gold" or returned_string == "golden")):
         result_array["adjective"] = "blond"
 
     #hair color red
-    if (entity == "hair_color" and (returned_string == "red" or returned_string == "ginger" 
+    elif (entity == "hair_color" and (returned_string == "red" or returned_string == "ginger" 
         or returned_string == "auburn")):
         result_array["adjective"] = "red"
 
     #hair color brown
-    if (entity == "hair_color" and (returned_string == "brown" or returned_string == "brunette" 
+    elif (entity == "hair_color" and (returned_string == "brown" or returned_string == "brunette" 
         )):
         result_array["adjective"] = "brown"
 
@@ -72,7 +76,7 @@ def refactor_for_backend(result_array, transcription):
     if "glasses" in transcription and "not" in transcription:
         result_array = {"trait" : str("glasses"), "adjective" :  "false"}
 
-    if "glasses" in transcription:
+    elif "glasses" in transcription:
         result_array = {"trait" : str("glasses"), "adjective" :  "true"}
 
     
@@ -80,14 +84,19 @@ def refactor_for_backend(result_array, transcription):
     if "hat" in transcription and "not" in transcription:
         result_array = {"trait" : str("wearing_a_hat"), "adjective" :  "false"}
 
-    if "hat" in transcription:
+    elif "hat" in transcription and entity == 'hat_color':
+        result_array = {"trait" : str("hat_color"), "adjective" :  returned_string}
+        return result_array
+
+
+    elif "hat" in transcription:
         result_array = {"trait" : str("wearing_a_hat"), "adjective" :  "true"}
 
         #bald refactor
     if "bald" in transcription and "not" in transcription:
         result_array = {"trait" : str("bald"), "adjective" :  "false"}
 
-    if "bald" in transcription:
+    elif "bald" in transcription:
         result_array = {"trait" : str("bald"), "adjective" :  "true"}
 
     return result_array
@@ -213,6 +222,7 @@ def main():
               ("are they wearing a purple hat", {"entities": [(19,25,"hat_color")]}),
               ("does your person have a yellow hat", {"entities": [(24,30,"hat_color")]}), 
               ("do they have a white hat", {"entities": [(15,20,"hat_color")]}),
+              ("does your person have a red hat", {"entities": [(24,27,"hat_color")]}),
 
               ("does your person wear a hat", {"entities": [(24,27,"wearing_a_hat")]}), 
               ("do they wear a hat", {"entities": [(15,18,"wearing_a_hat")]}), 

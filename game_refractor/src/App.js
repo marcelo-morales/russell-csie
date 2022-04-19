@@ -10,7 +10,7 @@ function App() {
         <img src={dog_avatar} alt="Logo" />
         <p><h1>Hi, my name is Russell!<br></br></h1>
         <h1>Try asking questions about:<br></br></h1>
-        <h2> Hair color, baldness, hats, glasses</h2></p>
+         <h2>Hair color, baldness, hats, glasses</h2></p>
       </div>
       <Container characters={characters}></Container>
     </body>

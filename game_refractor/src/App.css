@@ -39,6 +39,7 @@ img {
 }
 
 .menus {
+  font-size: 17px;
 
 }
 
@@ -49,15 +50,15 @@ select{
 }
 
 .ask-question{
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
   color: #dd0010;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   margin: 10px auto;
-  border-radius: 20px;
+  border-radius: 28px;
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   outline: none;
   cursor: pointer;
   background-color: #004d9a;
@@ -96,7 +97,7 @@ select{
   vertical-align: top;
   background-color: #ffffe5;
   position: relative;
-  font-size: 12px;
+  font-size: 17px;
 }
 
 .details {
@@ -104,19 +105,21 @@ select{
 }
 
 .field-names {
-  display: inline-block;
+  display: block;
   padding: 0px 2px;
+  text-align: center;
 }
 
 .field-names p {
-  text-align: right;
+  text-align: center;
   margin: 3px;
 }
 
 .field-values {
-  display: inline-block;
+  display: block;
   font-weight: bold;
   padding: 0px 2px;
+  text-align: center;
 }
 
 .field-values p {
@@ -129,4 +132,12 @@ select{
   justify-content: center;
   align-items: center;
   background-color: #9FB4FF;
+  font-family: "Arial";
+  font-size: 28px;
+  font-weight: bold;
+  
+}
+
+.p1 {
+  font-size: 40px;
 }

@@ -15,7 +15,7 @@ var characters = [
     hat_color: "false",
     wearing_a_hat: "false",
     bald: "false",
-    wearing_glasses: "false",
+    glasses: "false",
     image: blonde_guy
   },
   {
@@ -24,7 +24,7 @@ var characters = [
     hat_color: "false",
     wearing_a_hat: "false",
     bald: "false",
-    wearing_glasses: "false",
+    glasses: "false",
     image: brunette_female
   },
   {
@@ -33,7 +33,7 @@ var characters = [
     hat_color: "false",
     wearing_a_hat: "false",
     bald: "true",
-    wearing_glasses: "true",
+    glasses: "true",
     image: bald_guy
   },
   {
@@ -42,7 +42,7 @@ var characters = [
     hat_color: "white",
     wearing_a_hat: "true",
     bald: "false",
-    wearing_glasses: "false",
+    glasses: "false",
     image: chef
   },
   {
@@ -51,7 +51,7 @@ var characters = [
     hat_color: "red",
     wearing_a_hat: "true",
     bald: "false",
-    wearing_glasses: "true",
+    glasses: "true",
     image: red_hat_woman
   },
   {
@@ -60,7 +60,7 @@ var characters = [
     hat_color: "false",
     wearing_a_hat: "false",
     bald: "false",
-    wearing_glasses: "true",
+    glasses: "true",
     image: curly_hair_woman
   },
   {
@@ -69,7 +69,7 @@ var characters = [
     hat_color: "purple",
     wearing_a_hat: "true",
     bald: "false",
-    wearing_glasses: "false",
+    glasses: "false",
     image: witch
   },
   {
@@ -78,7 +78,7 @@ var characters = [
     hat_color: "yellow",
     wearing_a_hat: "true",
     bald: "false",
-    wearing_glasses: "true",
+    glasses: "true",
     image: yellow_hat_red_glasses_man
   }
 ]

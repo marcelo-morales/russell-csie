@@ -7,6 +7,14 @@ import Notification from "./Notification"
 import logo from "../assets/logo.png"
 
 import axios from "axios";
+//import fs from 'fs';
+
+// Imports the Google Cloud client library
+const textToSpeech = require('@google-cloud/text-to-speech');
+
+
+// Creates a client
+const client = new textToSpeech.TextToSpeechClient();
 
 class Container extends Component {
 
@@ -184,10 +192,25 @@ congratsResponses  =  (name) => {
         if (resultArray && resultArray.length > 0) {
           console.log('this is result ' + data["adjective"] + " " + data["trait"]);
           console.log('getting expression ' + this.yesresponses(data["adjective"], data["trait"]));
+
+
          this.state.synth.speak(new SpeechSynthesisUtterance(this.yesresponses(data["adjective"], data["trait"])));
+
+         const requestYes = {
+          input: {text: this.yesresponses(data["adjective"], data["trait"])},
+          // Select the language and SSML voice gender (optional)
+          voice: {languageCode: 'en-US', ssmlGender: 'NEUTRAL'},
+          // select the type of audio encoding
+          audioConfig: {audioEncoding: 'MP3'},
+        };
+
+        const [response] = await client.synthesizeSpeech(requestYes);
+
         //this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " +   resultArray[0] + resultArray[1]));
         }
         else {
+
+
           this.state.synth.speak(new SpeechSynthesisUtterance("I'm sorry can you repeat that? I was not able to catch what you were saying"));
         }
       }

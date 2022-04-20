@@ -148,6 +148,7 @@ congratsResponses  =  (name) => {
   choices[0] = "Great job, my person is " + name;
   choices[1] = "Wow you’re good at this! The character I was thinking of is "  + name;
   choices[2] = name + " is the chosen one. Congrats!";
+  console.log('saying congrats here');
   return choices[Math.floor(Math.random() * 3)];
 }
 
@@ -219,6 +220,23 @@ congratsResponses  =  (name) => {
       hiddenCharacters: hidden,
       answerIsYes: answerIsYes
     } )
+
+    var count = 0;
+    this.state.hiddenCharacters.forEach(function(flag) {
+      if (!flag) count++;
+    })
+    console.log('only appear once');
+    if (count === 1) {
+      var message;
+      console.log('repeating here');
+      message = this.congratsResponses(this.state.unknownCharacter.name);
+      this.finalSpeak(message);
+    }
+    else {
+      message = "The answer is ";
+      message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
+    }
+
   }
 
   gameOver = () => {
@@ -232,24 +250,12 @@ congratsResponses  =  (name) => {
 
   finalSpeak = (message) => {
     this.state.synth.speak(new SpeechSynthesisUtterance(message));
+    return;
   }
 
 
   render() {
-    var message = "";
-
-    if (this.state.answerIsYes !== undefined) {
-      if (this.gameOver()) {
-        console.log('repeating here');
-        message = this.congratsResponses(this.state.unknownCharacter.name);
-        this.finalSpeak(message);
-      }
-      else {
-        message = "The answer is ";
-        message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
-      }
-    }
-
+ 
     var cards = this.props.characters.map(function(character, index){
       return <Card
                 key={index}

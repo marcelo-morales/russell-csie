@@ -64,7 +64,7 @@ class Container extends Component {
         returnList.push("")
     }
 
-    else if (trait == "bald") {
+    else if (trait === "bald") {
       returnList.push("glasses")
       returnList.push("")
     } 
@@ -72,6 +72,85 @@ class Container extends Component {
     return returnList;
 
 }
+
+noResponse =  (adjective, entity) => {
+  let choices = [];
+
+  if (entity === "bald") {
+    choices[0] = "No my person is  not bald";
+    choices[1] = "Nope, my character I’m thinking of is  not bald try another guess";
+    choices[2] = "Nice try, but my person is not bald guess again";
+
+    return choices[Math.floor(Math.random() * 3)];
+  }
+  
+  if (entity === "glasses") {
+    adjective = "";
+  }
+
+  if (entity === "hair_color") {
+    entity = "hair";
+  }
+
+  if (entity === "hat_color") {
+    adjective = "a " + adjective;
+    entity = "hat";
+  }
+
+  if (entity === "wearing_a_hat") {
+    adjective = "a ";
+    entity = "hat";
+  }
+
+  choices[0] = "No my person does not have " + adjective +  entity;
+  choices[1] = "Nope, my character I’m thinking of does not have "  + adjective +  entity +  " try another guess";
+  choices[2] = "Nice try, but my person does not have " + adjective + entity + " guess again";
+
+  return choices[Math.floor(Math.random() * 3)];
+}
+
+yesresponses  =  (adjective, entity) => {
+  let choices = [];
+
+  if (entity === "bald") {
+    choices[0] = "Good guess! My person is bald";
+    choices[1] = "That’s right, my person is bald";
+    return choices[Math.floor(Math.random() * 3)];
+  }
+
+
+  if (entity === "glasses") {
+    adjective = "";
+  }
+
+  if (entity === "hair_color") {
+    entity = "hair";
+  }
+
+  if (entity === "hat_color") {
+    adjective = "a " + adjective;
+    entity = "hat";
+  }
+
+  if (entity === "wearing_a_hat") {
+    adjective = "a ";
+    entity = "hat";
+  }
+
+
+  choices[0] = "Good guess! My person does have " + adjective +  entity;
+  choices[1] = "That’s right, my person has "  + adjective +  entity;
+  return choices[Math.floor(Math.random() * 2)];
+}
+
+congratsResponses  =  (name) => {
+  let choices = [];
+  choices[0] = "Great job, my person is " + name;
+  choices[1] = "Wow you’re good at this! The character I was thinking of is "  + name;
+  choices[2] = name + " is the chosen one. Congrats!";
+  return choices[Math.floor(Math.random() * 3)];
+}
+
 
   questionSelected = async (question, answer) => {
 
@@ -101,8 +180,11 @@ class Container extends Component {
       if (data["trait"] === "bald") {
         this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person is bald"));
       } else {
-        if (resultArray) {
-        this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " +   resultArray[0] + resultArray[1]));
+        if (resultArray && resultArray.length > 0) {
+          console.log('this is result ' + data["adjective"] + " " + data["trait"]);
+          console.log('getting expression ' + this.yesresponses(data["adjective"], data["trait"]));
+         this.state.synth.speak(new SpeechSynthesisUtterance(this.yesresponses(data["adjective"], data["trait"])));
+        //this.state.synth.speak(new SpeechSynthesisUtterance("Yes, my person has " +   resultArray[0] + resultArray[1]));
         }
         else {
           this.state.synth.speak(new SpeechSynthesisUtterance("I'm sorry can you repeat that? I was not able to catch what you were saying"));
@@ -117,9 +199,11 @@ class Container extends Component {
       if (data["trait"] === "bald") {
         this.state.synth.speak(new SpeechSynthesisUtterance("No, my person is not bald"));
       } else {
-        if (resultArray) {
-          this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   resultArray[0] + resultArray[1]));
-          console.log('this is what i am saying ' + 'No, my person does not have ' +   resultArray[0] + ' ' +  resultArray[1]);
+        if (resultArray && resultArray.length > 0) {
+          //this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   resultArray[0] + resultArray[1]));
+          console.log('this is result ' + data["adjective"] + " " +  data["trait"]);
+          console.log('getting expression ' + this.noResponse(data["adjective"], data["trait"]));
+          this.state.synth.speak(new SpeechSynthesisUtterance(this.noResponse(data["adjective"], data["trait"])));
         }
         else {
           this.state.synth.speak(new SpeechSynthesisUtterance("I'm sorry can you repeat that? I was not able to catch what you were saying"));
@@ -128,7 +212,6 @@ class Container extends Component {
       // this.state.synth.speak(new SpeechSynthesisUtterance("No, my person does not have " +   resultArray[0] + resultArray[1]));
       // console.log('this is what i am saying ' + 'No, my person does not have ' +   resultArray[0] + ' ' +  resultArray[1]);
     }
-
 
 
     // These changes will force the re-render.
@@ -143,22 +226,28 @@ class Container extends Component {
     this.state.hiddenCharacters.forEach(function(flag) {
       if (!flag) count++;
     })
+    console.log('only appear once');
     return (count === 1);
+  }
+
+  finalSpeak = (message) => {
+    this.state.synth.speak(new SpeechSynthesisUtterance(message));
   }
 
 
   render() {
     var message = "";
+
     if (this.state.answerIsYes !== undefined) {
       if (this.gameOver()) {
-        message = this.state.unknownCharacter.name + " is the chosen one. Congrats!";
-        this.state.synth.speak(new SpeechSynthesisUtterance(message));
+        console.log('repeating here');
+        message = this.congratsResponses(this.state.unknownCharacter.name);
+        this.finalSpeak(message);
       }
       else {
         message = "The answer is ";
         message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
       }
-      // this.state.synth.speak(new SpeechSynthesisUtterance(message));
     }
 
     var cards = this.props.characters.map(function(character, index){
@@ -177,7 +266,7 @@ class Container extends Component {
             characters={this.props.characters}
             handleChange={this.questionSelected}>
           </Menus>
-          <Notification>{message}</Notification>
+          {/* <Notification>{message}</Notification> */}
         </div>
         {cards}
       </div>

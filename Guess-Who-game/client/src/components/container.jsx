@@ -3,10 +3,12 @@ var React = require('react');
 var Menus = require('./menus/menus.jsx');
 var Card = require('./cards/card.jsx');
 var Notification = require('./notification.jsx');
+const { ExtendedAPIPlugin } = require('webpack');
 
 var Container = React.createClass({
 
   getInitialState: function() {
+
     var hidden = []
     for (var i = 0; i < this.props.characters.length; i++) {
       hidden.push(false);
@@ -57,8 +59,10 @@ var Container = React.createClass({
   render: function() {
     var message = "";
     if (this.state.answerIsYes !== undefined) {
-      if (this.gameOver())
+      if (this.gameOver()) {
         message = this.state.unknownCharacter.name + " is the chosen one.";
+        return;
+      }
       else {
         message = "The answer is ";
         message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;

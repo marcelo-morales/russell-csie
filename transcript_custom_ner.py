@@ -60,7 +60,7 @@ def refactor_for_backend(result_array, transcription):
     #hair color blonde
     if (entity == "hair_color" and (returned_string == "blond" or returned_string == "blonde" 
         or returned_string == "yellow" or returned_string == "gold" or returned_string == "golden")):
-        result_array["adjective"] = "blond"
+        result_array["adjective"] = "blonde"
 
     #hair color red
     elif (entity == "hair_color" and (returned_string == "red" or returned_string == "ginger" 
@@ -150,6 +150,8 @@ def main():
         result_array = {"trait" : str(ent.label_), "adjective" :  str(ent.text)}
 
         result_array = refactor_for_backend(result_array, transcription)
+
+        
 
         print("what is returned to game backend is " + result_array["trait"] + " and " + result_array["adjective"])
 

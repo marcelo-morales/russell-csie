@@ -255,8 +255,8 @@ def main():
               ("how about jamie ", {"entities": [(10,15,"name")]}),
               ("is your character charles", {"entities": [(18,25,"name")]}),
               ("shannon", {"entities": [(0,7,"name")]}), 
-              ("claire", {"entities": [(0,6,"name")]})                                           
-              # ("Walmart is a leading e-commerce company", {"entities": [(0, 7, "ORG")]})
+              ("claire", {"entities": [(0,6,"name")]}),  
+              ("easter person blonde", {"entities": [(14,20,"hair_color")]}),
               ]
 
         # Adding labels to the `ner`

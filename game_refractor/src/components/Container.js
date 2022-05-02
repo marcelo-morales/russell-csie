@@ -7,10 +7,9 @@ import Notification from "./Notification"
 import logo from "../assets/logo.png"
 
 import axios from "axios";
+import getAudio from "../services/api";
 
 class Container extends Component {
-
-
 
   constructor(props) {
     super(props);
@@ -248,9 +247,11 @@ congratsResponses  =  (name) => {
     return (count === 1);
   }
 
-  finalSpeak = (message) => {
-    this.state.synth.speak(new SpeechSynthesisUtterance(message));
-    return;
+  finalSpeak = async (message) => {
+    // this.state.synth.speak(new SpeechSynthesisUtterance(message));
+    const response = await getAudio(message);
+    const audio = new Audio("data:audio/wav;base64," + response);
+    audio.play();
   }
 
 

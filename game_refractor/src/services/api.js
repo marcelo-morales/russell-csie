@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
 });
 
 async function getAudio(text) {
+  console.log("this is what i am saying " + text)
   const body = {
     input: {
       text: text,

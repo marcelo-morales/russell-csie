@@ -3,8 +3,19 @@ import characters from './characters';
 import Container from './components/Container'
 import dog_avatar from '../src/assets/russell-dog.png';
 
+
+// function sayInstructions() {
+//   window.speechSynthesis.speak("Hello welcome to russell");
+// }
+
 function App() {
+
+  //sayInstructions();
+
+
   return (
+
+
     <body>
       <div className="image-container">
       <p >&nbsp;&nbsp; My name is Russell!<br></br>

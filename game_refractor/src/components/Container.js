@@ -11,6 +11,10 @@ import getAudio from "../services/api";
 
 class Container extends Component {
 
+   sayInstructions = () => {
+    this.speak("Hello, welcome to russell !");
+  }
+
   constructor(props) {
     super(props);
     var hidden = []
@@ -22,8 +26,11 @@ class Container extends Component {
     this.state = {
       unknownCharacter: this.props.characters[randomNo],
       hiddenCharacters: hidden,
-      synth: window.speechSynthesis
+      synth: window.speechSynthesis,
+      messageToDisplay: "Click on button to ask question"
     }
+
+    this.sayInstructions();
   }
 
    formatSpeakingOutput =  (adjective, trait) => {
@@ -157,6 +164,14 @@ congratsResponses  =  (name) => {
     const response = await axios.get("http://127.0.0.1:5000/");
     const data = response.data;
 
+    // if (data) {
+    //   this.state.messageToDisplay("We heard you, click on button to ask another question")
+    // } else {
+    //   this.state.messageToDisplay("Click on button to ask another question, I were not able to hear you")
+    // }
+
+    
+
     question = data["trait"];
     answer = data["adjective"];
 
@@ -174,36 +189,50 @@ congratsResponses  =  (name) => {
                   (answerIsYes && (characters[i][question] !== answer)) ||
                   this.state.hiddenCharacters[i]);
     }
-    if (answerIsYes) {
-      let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
-      if (data["trait"] === "bald") {
-        this.speak("Yes, my person is bald");
-      } else {
-        if (resultArray && resultArray.length > 0) {
-          console.log('this is result ' + data["adjective"] + " " + data["trait"]);
-          console.log('getting expression ' + this.yesresponses(data["adjective"], data["trait"]));
-         this.speak(this.yesresponses(data["adjective"], data["trait"]));
-        }
-        else {
-          this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+    var count = 0;
+    this.state.hiddenCharacters.forEach(function(flag) {
+      if (!flag) count++;
+    })
+
+    if (count === 1) {
+      let message;
+      console.log('repeating here');
+
+      setTimeout(100);
+
+      message = this.congratsResponses(this.state.unknownCharacter.name);
+      this.speak(message);
+    } else {
+      if (answerIsYes) {
+        let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
+        if (data["trait"] === "bald") {
+          this.speak("Yes, my person is bald");
+        } else {
+          if (resultArray && resultArray.length > 0) {
+            console.log('this is result ' + data["adjective"] + " " + data["trait"]);
+            console.log('getting expression ' + this.yesresponses(data["adjective"], data["trait"]));
+          this.speak(this.yesresponses(data["adjective"], data["trait"]));
+          }
+          else {
+            this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+          }
         }
       }
-    }
-    else if (answerIsNo) {
-      let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
-      if (data["trait"] === "bald") {
-        this.speak("No, my person is not bald");
-      } else {
-        if (resultArray && resultArray.length > 0) {
-          console.log('this is result ' + data["adjective"] + " " +  data["trait"]);
-          console.log('getting expression ' + this.noResponse(data["adjective"], data["trait"]));
-          this.speak(this.noResponse(data["adjective"], data["trait"]));
-        }
-        else {
-          this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+      else if (answerIsNo) {
+        let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
+        if (data["trait"] === "bald") {
+          this.speak("No, my person is not bald");
+        } else {
+          if (resultArray && resultArray.length > 0) {
+            console.log('this is result ' + data["adjective"] + " " +  data["trait"]);
+            console.log('getting expression ' + this.noResponse(data["adjective"], data["trait"]));
+            this.speak(this.noResponse(data["adjective"], data["trait"]));
+          }
+          else {
+            this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+          }
         }
       }
-      // console.log('this is what i am saying ' + 'No, my person does not have ' +   resultArray[0] + ' ' +  resultArray[1]);
     }
 
 
@@ -213,22 +242,7 @@ congratsResponses  =  (name) => {
       answerIsYes: answerIsYes
     } )
 
-    var count = 0;
-    this.state.hiddenCharacters.forEach(function(flag) {
-      if (!flag) count++;
-    })
     console.log('only appear once');
-    if (count === 1) {
-      var message;
-      console.log('repeating here');
-      message = this.congratsResponses(this.state.unknownCharacter.name);
-      this.speak(message);
-    }
-    else {
-      message = "The answer is ";
-      message += (this.state.answerIsYes) ? "'Yes'." : "'No'." ;
-    }
-
   }
 
   gameOver = () => {

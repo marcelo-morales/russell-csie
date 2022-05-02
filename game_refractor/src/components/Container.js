@@ -10,8 +10,6 @@ import axios from "axios";
 
 class Container extends Component {
 
-
-
   constructor(props) {
     super(props);
     var hidden = []
@@ -23,7 +21,8 @@ class Container extends Component {
     this.state = {
       unknownCharacter: this.props.characters[randomNo],
       hiddenCharacters: hidden,
-      synth: window.speechSynthesis
+      synth: window.speechSynthesis,
+      messageHeard: "Not listening yet"
     }
   }
 
@@ -155,9 +154,16 @@ congratsResponses  =  (name) => {
 
   questionSelected = async (question, answer) => {
 
-    const response = await axios.get("http://127.0.0.1:5000/");
-    const data = response.data;
+    let data;
 
+    await axios.get("http://127.0.0.1:5000/").then((res) => {
+      data = res.data;
+      this.state.messageHeard("Successfully hear what you are saying");
+    }).catch(() => {
+      this.state.messageHeard("Click on button again, I was not able to hear what you were saying");
+    });
+
+     
     question = data["trait"];
     answer = data["adjective"];
 
@@ -253,7 +259,6 @@ congratsResponses  =  (name) => {
     return;
   }
 
-
   render() {
  
     var cards = this.props.characters.map(function(character, index){
@@ -272,7 +277,7 @@ congratsResponses  =  (name) => {
             characters={this.props.characters}
             handleChange={this.questionSelected}>
           </Menus>
-          {/* <Notification>{message}</Notification> */}
+          {/* <Notification>{this.state.messageHeard}</Notification> */}
         </div>
         {cards}
       </div>

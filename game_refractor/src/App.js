@@ -7,10 +7,12 @@ function App() {
   return (
     <body>
       <div className="image-container">
+      <p >&nbsp;&nbsp; My name is Russell!<br></br>
+      &nbsp;&nbsp; I'm thinking of a character,<br></br>
+      &nbsp;&nbsp; try to guess it!</p>
         <img src={dog_avatar} alt="Logo" />
-        <p><h1>Hi, my name is Russell!<br></br></h1>
-        <h1>Try asking questions about:<br></br></h1>
-         <h2>Hair color, baldness, hats, glasses</h2></p>
+        <p>Click the <span style={{color:"red"}}>?</span> button to ask a question about:<br></br>
+         Hair color, baldness, hats, hat color, glasses</p>
       </div>
       <Container characters={characters}></Container>
     </body>

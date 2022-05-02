@@ -23,7 +23,8 @@ class Container extends Component {
     this.state = {
       unknownCharacter: this.props.characters[randomNo],
       hiddenCharacters: hidden,
-      synth: window.speechSynthesis
+      synth: window.speechSynthesis,
+      messageDisplayed: "Not listening yet"
     }
   }
 
@@ -157,6 +158,11 @@ congratsResponses  =  (name) => {
 
     const response = await axios.get("http://127.0.0.1:5000/");
     const data = response.data;
+    if (data) {
+      this.messageDisplayed("Listened successfully! You are able to ask another question")
+    } else {
+      this.messageDisplayed("Click on the button to ask a question, we were not able to hear you")
+    }
 
     question = data["trait"];
     answer = data["adjective"];
@@ -272,7 +278,7 @@ congratsResponses  =  (name) => {
             characters={this.props.characters}
             handleChange={this.questionSelected}>
           </Menus>
-          {/* <Notification>{message}</Notification> */}
+          <Notification>{this.state.messageDisplayed}</Notification>
         </div>
         {cards}
       </div>

@@ -167,28 +167,15 @@ congratsResponses  =  (name) => {
   questionSelected = async (question, answer) => {
 
     let response = "";
-    this.setState({listening: true});
+    this.setState({messageToDisplay: "Listening now!!"})
     try {
       response = await axios.get("http://127.0.0.1:5000/");
     } catch {
       this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
-      this.setState({listening: false});
+      this.setState({messageToDisplay: "I did not undestand you, try asking again!"});
       return;
     }
-    this.setState({listening: false});
-    const data = response.data;
-
-
-    if (data) {
-      console.log("enddd " + JSON.stringify(data));
-      this.setState({messageToDisplay: "We heard you, click on button to ask another question"});
-
-    } else {
-      console.log("lost now");
-      this.setState({messageToDisplay: "We were not able to you, click on button to ask another question"});
-    }
-
-    
+    const data = response.data;    
 
     question = data["trait"];
     answer = data["adjective"];
@@ -213,6 +200,7 @@ congratsResponses  =  (name) => {
     })
 
     if (count === 1) {
+      this.setState({messageToDisplay: "Congrats, you got the character!"});
       let message;
       console.log('repeating here');
 
@@ -221,6 +209,7 @@ congratsResponses  =  (name) => {
       message = this.congratsResponses(this.state.unknownCharacter.name);
       this.speak(message);
     } else {
+      this.setState({messageToDisplay: "I heard you, click on button to ask another question"});
       if (answerIsYes) {
         let resultArray = this.formatSpeakingOutput(data["adjective"], data["trait"]);
         if (data["trait"] === "bald") {

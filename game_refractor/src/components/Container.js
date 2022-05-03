@@ -161,7 +161,13 @@ congratsResponses  =  (name) => {
 
   questionSelected = async (question, answer) => {
 
-    const response = await axios.get("http://127.0.0.1:5000/");
+    let response = "";
+    try {
+      response = await axios.get("http://127.0.0.1:5000/");
+    } catch {
+      this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+      return;
+    }
     const data = response.data;
 
     // if (data) {
@@ -190,7 +196,7 @@ congratsResponses  =  (name) => {
                   this.state.hiddenCharacters[i]);
     }
     var count = 0;
-    this.state.hiddenCharacters.forEach(function(flag) {
+    hidden.forEach(function(flag) {
       if (!flag) count++;
     })
 

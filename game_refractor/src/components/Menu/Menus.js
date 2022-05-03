@@ -54,13 +54,14 @@ class Menus extends Component {
   }
 
   render() {
-    var answerMenu = this.makeAnswerMenu(this.state.questionChoice);
+    console.log(this.props.listening);
     return(
       <div className="menus">
         <h2>Click to ask:</h2>
         <Ask_Question
           handleClick={this.askQuestion}>
         </Ask_Question>
+        {this.props.listening && <p>Listening now...</p>}
       </div>
     )
   }

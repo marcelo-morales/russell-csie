@@ -27,7 +27,8 @@ class Container extends Component {
       unknownCharacter: this.props.characters[randomNo],
       hiddenCharacters: hidden,
       synth: window.speechSynthesis,
-      messageToDisplay: "Click on button to ask question"
+      messageToDisplay: "Click on button to ask question",
+      listening: false
     }
 
     this.sayInstructions();
@@ -162,12 +163,15 @@ congratsResponses  =  (name) => {
   questionSelected = async (question, answer) => {
 
     let response = "";
+    this.setState({listening: true});
     try {
       response = await axios.get("http://127.0.0.1:5000/");
     } catch {
       this.speak("I'm sorry can you repeat that? I was not able to catch what you were saying");
+      this.setState({listening: false});
       return;
     }
+    this.setState({listening: false});
     const data = response.data;
 
     // if (data) {
@@ -283,7 +287,8 @@ congratsResponses  =  (name) => {
           <img src={logo} />
           <Menus
             characters={this.props.characters}
-            handleChange={this.questionSelected}>
+            handleChange={this.questionSelected}
+            listening={this.state.listening}>
           </Menus>
           {/* <Notification>{message}</Notification> */}
         </div>

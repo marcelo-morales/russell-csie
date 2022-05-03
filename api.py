@@ -46,5 +46,5 @@ def get_audio():
     }
 
     to_return = jsonify(api_response)
-    # to_return.headers.add('Access-Control-Allow-Origin', '*')
+    to_return.headers.add('Access-Control-Allow-Origin', '*')
     return to_return

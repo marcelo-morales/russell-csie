@@ -5,10 +5,11 @@ from google.cloud import texttospeech
 import base64
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
 def get_question():
     result = main()
     response = jsonify(result)
@@ -16,6 +17,7 @@ def get_question():
     return response
 
 @app.route('/audio/', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def get_audio():
     # Instantiates a client
     client = texttospeech.TextToSpeechClient()

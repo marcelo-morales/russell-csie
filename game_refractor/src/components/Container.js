@@ -9,6 +9,10 @@ import logo from "../assets/logo.png"
 import axios from "axios";
 import getAudio from "../services/api";
 
+const myComponentStyle = {
+  paddingTop: '200px',
+}
+
 class Container extends Component {
 
    sayInstructions = () => {
@@ -27,7 +31,7 @@ class Container extends Component {
       unknownCharacter: this.props.characters[randomNo],
       hiddenCharacters: hidden,
       synth: window.speechSynthesis,
-      messageToDisplay: "Click on button to ask question",
+      messageToDisplay: "Click on button to ask a question",
       listening: false
     }
 
@@ -294,7 +298,9 @@ congratsResponses  =  (name) => {
             handleChange={this.questionSelected}
             listening={this.state.listening}>
           </Menus>
-          <Notification>{this.state.messageToDisplay}</Notification>
+          {this.state.hiddenCharacters ? ( 
+          <Notification style={myComponentStyle}>{this.state.messageToDisplay}</Notification>
+          ) : (<Notification>{this.state.messageToDisplay}</Notification>)}
         </div>
         {cards}
       </div>

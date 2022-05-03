@@ -5,7 +5,7 @@ from google.cloud import texttospeech
 import base64
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
@@ -15,12 +15,11 @@ def get_question():
     # response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/audio/', methods=['POST'])
+@app.route('/audio/', methods=['POST', 'OPTIONS'])
 def get_audio():
     # Instantiates a client
     client = texttospeech.TextToSpeechClient()
     text = request.json['text']
-    print(text)
     # Set the text input to be synthesized
     synthesis_input = texttospeech.SynthesisInput(text=text)
 
@@ -46,5 +45,15 @@ def get_audio():
     }
 
     to_return = jsonify(api_response)
-    to_return.headers.add('Access-Control-Allow-Origin', '*')
+    # to_return.headers.add('Access-Control-Allow-Origin', '*')
     return to_return
+
+'''
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  response.headers.add('Access-Control-Allow-Credentials', 'true')
+  return response
+'''

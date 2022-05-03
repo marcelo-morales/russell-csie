@@ -54,7 +54,6 @@ class Menus extends Component {
   }
 
   render() {
-    console.log(this.props.listening);
     return(
       <div className="menus">
         <h2>Click to ask:</h2>

@@ -174,11 +174,15 @@ congratsResponses  =  (name) => {
     this.setState({listening: false});
     const data = response.data;
 
-    // if (data) {
-    //   this.state.messageToDisplay("We heard you, click on button to ask another question")
-    // } else {
-    //   this.state.messageToDisplay("Click on button to ask another question, I were not able to hear you")
-    // }
+
+    if (data) {
+      console.log("enddd " + JSON.stringify(data));
+      this.setState({messageToDisplay: "We heard you, click on button to ask another question"});
+
+    } else {
+      console.log("lost now");
+      this.setState({messageToDisplay: "We were not able to you, click on button to ask another question"});
+    }
 
     
 
@@ -290,7 +294,7 @@ congratsResponses  =  (name) => {
             handleChange={this.questionSelected}
             listening={this.state.listening}>
           </Menus>
-          {/* <Notification>{message}</Notification> */}
+          <Notification>{this.state.messageToDisplay}</Notification>
         </div>
         {cards}
       </div>

@@ -25,9 +25,16 @@ followed by
   ```bash
 flask run
 ```
-You will be instructed that the app is running on some port in your localhost. Open that link (will look something like http://127.0.0.1:5000/) , and start playing Russell: Your Friendly Game Companion
-
-
+Next in another terminal, enter the "game_refractor" directory.
+From there run 
+  ```
+npm i 
+```
+if you haven't already to install any libraries.
+Then, run
+```
+npm run start
+```
 
 # Text-To-Speech
   To test out this subsection, you can run 

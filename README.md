@@ -1,6 +1,4 @@
 # russell-csie
-Please see this colab (https://colab.research.google.com/drive/1XlB6MdMErjjFAI8GFYXBDQTAXFYKtJ5t?usp=sharing) for NLP progress.
-
 # Installing Dependencies
 
 To run our application, you need to make sure you have spaCy[https://spacy.io/usage] installed, which you can do by running the following prompts

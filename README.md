@@ -15,6 +15,11 @@ In addition, you will also need to install the SpeechRecognition[https://pypi.or
 pip3 install SpeechRecognition
 ```
 
+For any frontend dependencies, run the following command in the game_refractor directory.
+```
+npm i 
+```
+
 # Russell: Your Friendly Game Companion
   To run the whole app, both the frontend and the backend, make sure you are in the outmost directory where api.py is located. From this location, run
   
@@ -26,15 +31,11 @@ followed by
 flask run
 ```
 Next in another terminal, enter the "game_refractor" directory.
-From there run 
-  ```
-npm i 
-```
-if you haven't already to install any libraries.
 Then, run
 ```
 npm run start
 ```
+to start the frontend.
 
 # Text-To-Speech
   To test out this subsection, you can run 

@@ -4,15 +4,15 @@
 To run our application, you need to make sure you have spaCy[https://spacy.io/usage] installed, which you can do by running the following prompts
 
   ```bash
-pip install -U pip setuptools wheel
-pip install -U spacy
+pip3 install -U pip setuptools wheel
+pip3 install -U spacy
 python -m spacy download en_core_web_sm
 ```
 
 In addition, you will also need to install the SpeechRecognition[https://pypi.org/project/SpeechRecognition/] library by installing the corresponding dependency
 
   ```bash
-pip install SpeechRecognition
+pip3 install SpeechRecognition
 ```
 
 # Russell: Your Friendly Game Companion

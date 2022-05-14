@@ -1,20 +1,23 @@
 # russell-csie
-Please see this colab (https://colab.research.google.com/drive/1XlB6MdMErjjFAI8GFYXBDQTAXFYKtJ5t?usp=sharing) for NLP progress.
-
 # Installing Dependencies
 
 To run our application, you need to make sure you have spaCy[https://spacy.io/usage] installed, which you can do by running the following prompts
 
   ```bash
-pip install -U pip setuptools wheel
-pip install -U spacy
+pip3 install -U pip setuptools wheel
+pip3 install -U spacy
 python -m spacy download en_core_web_sm
 ```
 
 In addition, you will also need to install the SpeechRecognition[https://pypi.org/project/SpeechRecognition/] library by installing the corresponding dependency
 
   ```bash
-pip install SpeechRecognition
+pip3 install SpeechRecognition
+```
+
+For any frontend dependencies, run the following command in the game_refractor directory.
+```
+npm i 
 ```
 
 # Russell: Your Friendly Game Companion
@@ -27,9 +30,12 @@ followed by
   ```bash
 flask run
 ```
-You will be instructed that the app is running on some port in your localhost. Open that link (will look something like http://127.0.0.1:5000/) , and start playing Russell: Your Friendly Game Companion
-
-
+Next in another terminal, enter the "game_refractor" directory.
+Then, run
+```
+npm run start
+```
+to start the frontend.
 
 # Text-To-Speech
   To test out this subsection, you can run 

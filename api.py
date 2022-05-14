@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from transcript_custom_ner import main
-from google.cloud import texttospeech
-import base64
+# from google.cloud import texttospeech
+# import base64
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -16,6 +16,7 @@ def get_question():
     # response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+'''
 @app.route('/audio/', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def get_audio():
@@ -49,8 +50,7 @@ def get_audio():
     to_return = jsonify(api_response)
     # to_return.headers.add('Access-Control-Allow-Origin', '*')
     return to_return
-
-'''
+    
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')

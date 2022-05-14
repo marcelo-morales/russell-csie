@@ -7,7 +7,6 @@ import Notification from "./Notification"
 import logo from "../assets/logo.png"
 
 import axios from "axios";
-import getAudio from "../services/api";
 
 const myComponentStyle = {
   paddingTop: '200px',
@@ -262,9 +261,12 @@ congratsResponses  =  (name) => {
   }
 
   speak = async (message) => {
+    /*
     const response = await getAudio(message);
     const audio = new Audio("data:audio/wav;base64," + response);
     audio.play();
+    */
+    this.state.synth.speak(new SpeechSynthesisUtterance(message));
   }
 
 

@@ -15,6 +15,13 @@ In addition, you will also need to install the SpeechRecognition[https://pypi.or
 pip3 install SpeechRecognition
 ```
 
+You also need to install flask and flask-cors using the following steps:
+
+  ```bash
+pip3 install flask
+pip3 install flask-cors
+```
+
 For any frontend dependencies, run the following command in the game_refractor directory.
 ```
 npm i 
